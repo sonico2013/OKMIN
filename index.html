@@ -1,101 +1,41 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Revista Digital - Flipbook</title>
-  <style>
-    body {
-      margin: 0;
-      background: #111;
-      color: white;
-      font-family: sans-serif;
-      overflow: hidden;
-    }
-    header {
-      position: fixed;
-      width: 100%;
-      background: #222;
-      padding: 1em;
-      text-align: center;
-      z-index: 1000;
-    }
-    .viewer {
-      margin-top: 70px;
-      white-space: nowrap;
-      overflow-x: scroll;
-      scroll-behavior: smooth;
-      height: calc(100vh - 70px);
-    }
-    .page {
-      display: inline-block;
-      width: 100vw;
-      height: 100%;
-      vertical-align: top;
-    }
-    .page img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-    .nav-buttons {
-      position: fixed;
-      top: 50%;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      z-index: 1001;
-      pointer-events: none;
-    }
-    .nav-buttons button {
-      background: rgba(255, 255, 255, 0.7);
-      color: black;
-      font-size: 2rem;
-      border: none;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      cursor: pointer;
-      pointer-events: all;
-    }
-  </style>
+  <title>I Minera - Revista Digital</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <header><h1>Revista ConCiencia - Volumen 4</h1></header>
+<header>
+  <img src="img/logo.jpg" alt="Logo I Minera" style="max-height: 80px;">
+  <h1>I Minera</h1>
+  <p>La voz de la minería actual</p>
+</header>
 
-  <div class="nav-buttons">
-    <button onclick="scrollPages(-1)">⬅️</button>
-    <button onclick="scrollPages(1)">➡️</button>
-  </div>
+<nav>
+  <a href="index.html">Inicio</a>
+  <a href="revista.html">Leer Revista</a>
+  <a href="#archivo">Ediciones anteriores</a>
+  <a href="#contacto">Contacto</a>
+</nav>
 
-  <div class="viewer" id="viewer">
-  </div>
+<section class="hero">
+  <h2>Edición Destacada</h2>
+  <img src="img/logo.jpg" alt="Portada Revista">
+  <br>
+  <a class="btn" href="revista.html">Leer ahora</a>
+</section>
 
-  <script>
-    const pageCount = 29;
-    const viewer = document.getElementById('viewer');
+<section class="banners">
+  <img src="banners/banner.jpg" alt="Publicidad 1">
+</section>
 
-    for (let i = 1; i <= pageCount; i++) {
-      const pageDiv = document.createElement('div');
-      pageDiv.className = 'page';
-
-      const img = document.createElement('img');
-      const num = i.toString().padStart(2, '0');
-      img.src = `page_${num}.jpg`;
-      img.alt = `Página ${i}`;
-
-      pageDiv.appendChild(img);
-      viewer.appendChild(pageDiv);
-    }
-
-    let currentPage = 0;
-
-    function scrollPages(direction) {
-      const screenWidth = window.innerWidth;
-      currentPage = Math.max(0, Math.min(currentPage + direction, pageCount - 1));
-      viewer.scrollTo({ left: screenWidth * currentPage, behavior: 'smooth' });
-    }
-  </script>
+<footer id="contacto">
+  <p>© 2025 Revista I Minera</p>
+</footer>
 
 </body>
 </html>
